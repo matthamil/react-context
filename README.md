@@ -12,7 +12,9 @@ Each flavor of state management is under a separate branch:
 
 :warning: This repo is not an endorsement of using context for all of your state management problems. Obligatory Tweet from Dan Abramov:
 
-![the words of dan](https://imgur.com/wzFDx7u.png)
+<p align="center">
+  <img src="https://imgur.com/wzFDx7u.png" alt="dan abramov">
+</p>
 
 ## Helpful Resources
 
