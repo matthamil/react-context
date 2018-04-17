@@ -21,3 +21,6 @@ Each flavor of state management is under a separate branch:
 ## Helpful Resources
 
 1.  [awesome-react-context](https://github.com/diegohaz/awesome-react-context)
+1.  [Unstated](https://github.com/jamiebuilds/unstated)
+1.  [Context API RFC](https://github.com/reactjs/rfcs/blob/master/text/0002-new-version-of-context.md)
+1.  [Context API pull request](https://github.com/reactjs/rfcs/pull/2/files)
