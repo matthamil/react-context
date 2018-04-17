@@ -2,17 +2,29 @@ import React from "react";
 import { PropTypes as T } from "prop-types";
 import "./Product.css";
 import { CartContext } from "../cart/CartContext";
+import { CurrencyContext } from "../i18n/CurrencyContext";
+
+const splitPriceForProductCard = price => {
+  const formattedPrice = Number.parseFloat(price).toFixed(2);
+  return formattedPrice.split(".");
+};
 
 const renderProductPrice = price => {
-  const formattedPrice = Number.parseFloat(price).toFixed(2);
-  const [wholeNum, decimal] = formattedPrice.split(".");
-
   return (
-    <div className="price">
-      <sup>$</sup>
-      <span className="price-whole-num">{wholeNum}</span>
-      <sup>{decimal}</sup>
-    </div>
+    <CurrencyContext.Consumer>
+      {({ currency, convertFromUSD }) => {
+        const [wholeNum, decimal] = splitPriceForProductCard(
+          convertFromUSD(price)
+        );
+        return (
+          <div className="price">
+            <sup>{currency.symbol}</sup>
+            <span className="price-whole-num">{wholeNum}</span>
+            <sup>{decimal}</sup>
+          </div>
+        );
+      }}
+    </CurrencyContext.Consumer>
   );
 };
 

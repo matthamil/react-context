@@ -14,6 +14,11 @@
   color: #ffffff;
 }
 
+select {
+  margin-right: 20px;
+  font-size: 1.5rem;
+}
+
 .website-title {
   font-size: 1.5rem;
   font-weight: 700;

@@ -4,6 +4,7 @@ import ProductList from "./components/products/ProductList";
 import Navbar from "./components/navbar/Navbar";
 import "./App.css";
 import { CartContext } from "./components/cart/CartContext";
+import { CurrencyContextProvider } from "./components/i18n/CurrencyContext";
 
 const addToCart = (state, change) => {
   const { product } = change.payload;
@@ -94,11 +95,13 @@ export default class App extends React.Component {
     return (
       <div className="center-align">
         <div className="app">
-          <CartContext.Provider value={providedValue}>
-            <Navbar />
-            <ProductList />
-            <Cart />
-          </CartContext.Provider>
+          <CurrencyContextProvider>
+            <CartContext.Provider value={providedValue}>
+              <Navbar />
+              <ProductList />
+              <Cart />
+            </CartContext.Provider>
+          </CurrencyContextProvider>
         </div>
       </div>
     );
