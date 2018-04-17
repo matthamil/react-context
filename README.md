@@ -14,6 +14,8 @@ Each flavor of state management is under a separate branch:
 1.  [Nested Context](https://github.com/matthamil/react-context/tree/4-nested-context)
 1.  [Unstated](https://github.com/matthamil/react-context/tree/5-unstated) _(this is awesome :sparkles:)_
 
+Checkout each branch one-by-one and run `yarn run start` (or `npm run start`) to see the app in action.
+
 :warning: This repo is not an endorsement of using context for all of your state management problems. Obligatory Tweet from Dan Abramov:
 
 <p align="center">
