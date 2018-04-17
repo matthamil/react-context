@@ -39,7 +39,7 @@ const EmptyCartMessage = () => (
     <span>
       <span role="img" aria-label="warning">
         ⚠️
-      </span>{" "}
+      </span>
       Your cart is empty.
     </span>
   </div>
