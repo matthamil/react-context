@@ -26,3 +26,14 @@ Each flavor of state management is under a separate branch:
 1.  [Unstated](https://github.com/jamiebuilds/unstated)
 1.  [Context API RFC](https://github.com/reactjs/rfcs/blob/master/text/0002-new-version-of-context.md)
 1.  [Context API pull request](https://github.com/reactjs/rfcs/pull/2/files)
+
+## Practice using Context
+
+> But Matt, I want to understand Context better! What can I do?
+
+Well, you can read about some of the resources above :point_up:. You can also try to extend the app in this repo by doing the following exercises:
+
+1.  Extend the [Context](https://github.com/matthamil/react-context/tree/3-context) example to use a product category context to choose which type of products are rendered in the product list.
+1.  Extend the [Unstated](https://github.com/matthamil/react-context/tree/5-unstated) example to use the a currency context like the one in the [Nested Context](https://github.com/matthamil/react-context/tree/4-nested-context) example.
+1.  Create a PR and fix my bad code.
+1.  Follow me on [Twitter](https://twitter.com/_matthamil).
