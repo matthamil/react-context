@@ -51,7 +51,7 @@ const TotalPrice = ({ total }) => (
   </div>
 );
 
-const Cart = ({ products, removeFromCart }) => (
+const Cart = ({ products, totalPrice, removeFromCart }) => (
   <Card title="Cart" gridColumn={3}>
     {products.length ? (
       products.map(product => (
@@ -64,9 +64,7 @@ const Cart = ({ products, removeFromCart }) => (
     ) : (
       <EmptyCartMessage />
     )}
-    <TotalPrice
-      total={products.reduce((total, p) => total + p.count * p.price, 0)}
-    />
+    <TotalPrice total={totalPrice} />
   </Card>
 );
 
@@ -74,7 +72,8 @@ Cart.propTypes = {
   products: T.arrayOf(
     T.shape({ ...productPropType, count: T.number.isRequired })
   ).isRequired,
-  removeFromCart: T.func.isRequired
+  removeFromCart: T.func.isRequired,
+  totalPrice: T.number.isRequired
 };
 
 Cart.defaultProps = {
@@ -82,7 +81,8 @@ Cart.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  products: state.cart
+  products: state.cart,
+  totalPrice: state.cart.reduce((total, p) => total + p.price * p.count, 0)
 });
 
 const mapDispatchToProps = dispatch =>
