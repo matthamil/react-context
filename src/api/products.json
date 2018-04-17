@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "sku": "1234-5678-9012",
+      "name": "Banana",
+      "price": 0.35,
+      "image": "https://imgur.com/Bv91Iu8.png"
+    },
+    {
+      "sku": "3KHZ-APPL-3290",
+      "name": "Apple",
+      "price": 0.5,
+      "image": "https://imgur.com/PPA9XeP.png"
+    },
+    {
+      "sku": "KH9A-36JB-BZOQ",
+      "name": "Orange",
+      "price": 0.8,
+      "image": "https://imgur.com/AKCBUrE.png"
+    },
+    {
+      "sku": "DRLP-MM8P-EERD",
+      "name": "Pineapple",
+      "price": 1.95,
+      "image": "https://imgur.com/6o42zqN.png"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+.app {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 50px;
+  grid-auto-rows: minmax(100px, auto);
+}

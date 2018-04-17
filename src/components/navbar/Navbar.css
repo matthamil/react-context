@@ -1,0 +1,37 @@
+.navbar {
+  grid-row: 1/1;
+  grid-column: 2/4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  background-color: #fff;
+  border-radius: 2;
+  padding: 20px 25px;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(156, 174, 200, 0.413);
+  background-color: #232f3e;
+  color: #ffffff;
+}
+
+.website-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.website-title,
+.navbar-cart {
+  display: block;
+}
+
+.navbar-cart-icon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.navbar-cart-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.5rem;
+}
