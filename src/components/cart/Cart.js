@@ -1,5 +1,8 @@
 import React from "react";
 import { PropTypes as T } from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { removeFromCart } from "../../actions/actionCreators";
 import { productPropType } from "../products/Product";
 import "./Cart.css";
 import Card from "../shared/Card";
@@ -78,4 +81,16 @@ Cart.defaultProps = {
   products: []
 };
 
-export default Cart;
+const mapStateToProps = state => ({
+  products: state.cart
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      removeFromCart
+    },
+    dispatch
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

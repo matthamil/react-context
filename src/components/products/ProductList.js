@@ -1,6 +1,9 @@
 import React from "react";
 import Product from "./Product";
 import { PropTypes as T } from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { addToCart } from "../../actions/actionCreators";
 import Card from "../shared/Card";
 import spinner from "../../images/spinner.svg";
 import api from "../../api";
@@ -12,7 +15,7 @@ const LoadingSpinner = () => (
   </div>
 );
 
-export default class ProductList extends React.Component {
+class ProductList extends React.Component {
   static propTypes = {
     addToCart: T.func.isRequired
   };
@@ -48,3 +51,13 @@ export default class ProductList extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      addToCart
+    },
+    dispatch
+  );
+
+export default connect(null, mapDispatchToProps)(ProductList);

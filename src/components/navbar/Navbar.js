@@ -1,5 +1,6 @@
 import React from "react";
 import { PropTypes as T } from "prop-types";
+import { connect } from "react-redux";
 import "./Navbar.css";
 
 const Navbar = ({ cartCount }) => (
@@ -18,4 +19,8 @@ Navbar.propTypes = {
   cartCount: T.number.isRequired
 };
 
-export default Navbar;
+const mapStateToProps = state => ({
+  cartCount: state.cart.reduce((total, p) => total + p.count, 0)
+});
+
+export default connect(mapStateToProps)(Navbar);
