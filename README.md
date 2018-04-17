@@ -4,7 +4,7 @@ A repo containing different ways to manage state in React with simple examples.
 
 ## How to use this repo
 
-You've heard about the Context API. You're ready to start using it. Here's a friendly build-up to using context to manage some portion of state in your production app.
+You've heard about the [Context API](https://reactjs.org/docs/context.html). You're ready to start using it. Here's a friendly step-by-step progression to using context to manage some portion of your state in your production app.
 
 Each flavor of state management is under a separate branch:
 
