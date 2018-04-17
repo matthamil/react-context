@@ -1,8 +1,7 @@
 import React from "react";
-import { PropTypes as T } from "prop-types";
-import { productPropType } from "../products/Product";
 import "./Cart.css";
 import Card from "../shared/Card";
+import { CartContext } from "./CartContext";
 
 const formatNumber = n => Number.parseFloat(n).toFixed(2);
 
@@ -48,34 +47,25 @@ const TotalPrice = ({ total }) => (
   </div>
 );
 
-const Cart = ({ products, removeFromCart }) => (
-  <Card title="Cart" gridColumn={3}>
-    {products.length ? (
-      products.map(product => (
-        <LineItem
-          key={`${product.sku}-cart`}
-          product={product}
-          removeFromCart={removeFromCart}
-        />
-      ))
-    ) : (
-      <EmptyCartMessage />
+const Cart = () => (
+  <CartContext.Consumer>
+    {({ cart, cartPrice, removeFromCart }) => (
+      <Card title="Cart" gridColumn={3}>
+        {cart.length ? (
+          cart.map(product => (
+            <LineItem
+              key={`${product.sku}-cart`}
+              product={product}
+              removeFromCart={removeFromCart}
+            />
+          ))
+        ) : (
+          <EmptyCartMessage />
+        )}
+        <TotalPrice total={cartPrice} />
+      </Card>
     )}
-    <TotalPrice
-      total={products.reduce((total, p) => total + p.count * p.price, 0)}
-    />
-  </Card>
+  </CartContext.Consumer>
 );
-
-Cart.propTypes = {
-  products: T.arrayOf(
-    T.shape({ ...productPropType, count: T.number.isRequired })
-  ).isRequired,
-  removeFromCart: T.func.isRequired
-};
-
-Cart.defaultProps = {
-  products: []
-};
 
 export default Cart;

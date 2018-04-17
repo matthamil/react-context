@@ -3,6 +3,7 @@ import Cart from "./components/cart/Cart";
 import ProductList from "./components/products/ProductList";
 import Navbar from "./components/navbar/Navbar";
 import "./App.css";
+import { CartContext } from "./components/cart/CartContext";
 
 const addToCart = (state, change) => {
   const { product } = change.payload;
@@ -80,13 +81,24 @@ export default class App extends React.Component {
   render() {
     const { cart } = this.state;
     const cartCount = cart.reduce((total, p) => total + p.count, 0);
+    const cartPrice = cart.reduce((total, p) => total + p.count * p.price, 0);
+
+    const providedValue = {
+      cart,
+      cartCount,
+      cartPrice,
+      addToCart: this.addToCart,
+      removeFromCart: this.removeFromCart
+    };
 
     return (
       <div className="center-align">
         <div className="app">
-          <Navbar cartCount={cartCount} />
-          <ProductList addToCart={this.addToCart} />
-          <Cart products={cart} removeFromCart={this.removeFromCart} />
+          <CartContext.Provider value={providedValue}>
+            <Navbar />
+            <ProductList />
+            <Cart />
+          </CartContext.Provider>
         </div>
       </div>
     );

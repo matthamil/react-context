@@ -1,6 +1,7 @@
 import React from "react";
 import { PropTypes as T } from "prop-types";
 import "./Product.css";
+import { CartContext } from "../cart/CartContext";
 
 const renderProductPrice = price => {
   const formattedPrice = Number.parseFloat(price).toFixed(2);
@@ -15,23 +16,27 @@ const renderProductPrice = price => {
   );
 };
 
-const Product = ({ image, name, price, addToCart }) => (
-  <section className="product-wrapper">
-    <div className="product-card">
-      <div className="product">
-        <div className="image-wrapper">
-          <img className="image" src={image} alt={name} />
+const Product = ({ product }) => (
+  <CartContext.Consumer>
+    {({ addToCart }) => (
+      <section className="product-wrapper">
+        <div className="product-card">
+          <div className="product">
+            <div className="image-wrapper">
+              <img className="image" src={product.image} alt={product.name} />
+            </div>
+            <div className="product-info">
+              <span className="name">{product.name}</span>
+              {renderProductPrice(product.price)}
+            </div>
+          </div>
+          <button className="add-to-cart" onClick={() => addToCart(product)}>
+            Add to Cart
+          </button>
         </div>
-        <div className="product-info">
-          <span className="name">{name}</span>
-          {renderProductPrice(price)}
-        </div>
-      </div>
-      <button className="add-to-cart" onClick={addToCart}>
-        Add to Cart
-      </button>
-    </div>
-  </section>
+      </section>
+    )}
+  </CartContext.Consumer>
 );
 
 export const productPropType = {
@@ -41,8 +46,7 @@ export const productPropType = {
 };
 
 Product.propTypes = {
-  ...productPropType,
-  addToCart: T.func.isRequired
+  product: T.shape(productPropType)
 };
 
 export default Product;
