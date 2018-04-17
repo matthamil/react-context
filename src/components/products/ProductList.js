@@ -1,6 +1,5 @@
 import React from "react";
 import Product from "./Product";
-import { PropTypes as T } from "prop-types";
 import Card from "../shared/Card";
 import spinner from "../../images/spinner.svg";
 import api from "../../api";
@@ -13,10 +12,6 @@ const LoadingSpinner = () => (
 );
 
 export default class ProductList extends React.Component {
-  static propTypes = {
-    addToCart: T.func.isRequired
-  };
-
   state = {
     loading: true,
     products: []
@@ -29,7 +24,6 @@ export default class ProductList extends React.Component {
   }
 
   render() {
-    const { addToCart } = this.props;
     const { products, loading } = this.state;
     return (
       <Card title="Products" gridColumn={2}>
@@ -37,11 +31,7 @@ export default class ProductList extends React.Component {
           <LoadingSpinner />
         ) : (
           products.map(product => (
-            <Product
-              {...product}
-              key={product.sku}
-              addToCart={() => addToCart(product)}
-            />
+            <Product product={product} key={product.sku} />
           ))
         )}
       </Card>

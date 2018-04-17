@@ -1,5 +1,7 @@
 import React from "react";
 import { PropTypes as T } from "prop-types";
+import { Subscribe } from "unstated";
+import CartContainer from "../cart/CartContainer";
 import "./Product.css";
 
 const renderProductPrice = price => {
@@ -15,23 +17,30 @@ const renderProductPrice = price => {
   );
 };
 
-const Product = ({ image, name, price, addToCart }) => (
-  <section className="product-wrapper">
-    <div className="product-card">
-      <div className="product">
-        <div className="image-wrapper">
-          <img className="image" src={image} alt={name} />
+const Product = ({ product }) => (
+  <Subscribe to={[CartContainer]}>
+    {cart => (
+      <section className="product-wrapper">
+        <div className="product-card">
+          <div className="product">
+            <div className="image-wrapper">
+              <img className="image" src={product.image} alt={product.name} />
+            </div>
+            <div className="product-info">
+              <span className="name">{product.name}</span>
+              {renderProductPrice(product.price)}
+            </div>
+          </div>
+          <button
+            className="add-to-cart"
+            onClick={() => cart.addToCart(product)}
+          >
+            Add to Cart
+          </button>
         </div>
-        <div className="product-info">
-          <span className="name">{name}</span>
-          {renderProductPrice(price)}
-        </div>
-      </div>
-      <button className="add-to-cart" onClick={addToCart}>
-        Add to Cart
-      </button>
-    </div>
-  </section>
+      </section>
+    )}
+  </Subscribe>
 );
 
 export const productPropType = {
@@ -41,8 +50,7 @@ export const productPropType = {
 };
 
 Product.propTypes = {
-  ...productPropType,
-  addToCart: T.func.isRequired
+  product: T.shape(productPropType)
 };
 
 export default Product;
